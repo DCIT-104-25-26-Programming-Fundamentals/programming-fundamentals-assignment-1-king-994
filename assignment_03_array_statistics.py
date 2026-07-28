@@ -88,4 +88,4 @@ if __name__ == "__main__":
         print(f"Sum:     {total}")
         print(f"Average: {average}")
         print(f"Maximum: {maximum}")
-        print(f"Minimum: {minimum}")
+        print(f"Minimum: {minimum}")i
