@@ -66,5 +66,102 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def display_menu():
+    """Print the menu options."""
+    print("\n============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
 
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    """Return a / b, or None if b is zero (caller handles the error)."""
+    if b == 0:
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    """Return a % b, or None if b is zero."""
+    if b == 0:
+        return None
+    return a % b
+
+
+def exponent(a, b):
+    return a ** b
+
+
+def get_numbers():
+    """Prompt for two numbers and return them as floats."""
+    first = float(input("Enter first number : "))
+    second = float(input("Enter second number: "))
+    return first, second
+
+
+def format_number(value):
+    """Display whole-number floats without a trailing .0"""
+    if value == int(value):
+        return str(int(value))
+    return str(value)
+
+
+if __name__ == "__main__":
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ")
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        elif choice in ("1", "2", "3", "4", "5", "6"):
+            a, b = get_numbers()
+
+            if choice == "1":
+                result = add(a, b)
+                symbol = "+"
+            elif choice == "2":
+                result = subtract(a, b)
+                symbol = "-"
+            elif choice == "3":
+                result = multiply(a, b)
+                symbol = "*"
+            elif choice == "4":
+                result = divide(a, b)
+                symbol = "/"
+                if result is None:
+                    print("Error: Cannot divide by zero.")
+                    continue
+            elif choice == "5":
+                result = modulus(a, b)
+                symbol = "%"
+                if result is None:
+                    print("Error: Cannot divide by zero.")
+                    continue
+            elif choice == "6":
+                result = exponent(a, b)
+                symbol = "**"
+
+            print(f"Result: {format_number(a)} {symbol} {format_number(b)} = {result}")
+
+        else:
+            print("Error: Please enter a number between 1 and 7.")
